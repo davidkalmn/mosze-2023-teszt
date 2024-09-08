@@ -4,24 +4,44 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS]; //hibás a konstans neve, N_ELEMENTS kellene, hogy legyen
-    std::cout << '1-100 ertekek duplazasa' //nincsen ; a sor végén
-    for (int i = 0;) //hiányzik a feltétel, illetve a léptetés
+    // Korrigáltuk a konstans nevét
+    int *b = new int[N_ELEMENTS]; 
+    
+    // Hozzáadtunk egy hiányzó pontosvesszőt
+    std::cout << "1-100 ertekek duplazasa" << std::endl; 
+    
+    // Javítva: feltétel és léptetés hozzáadva
+    for (int i = 0; i < N_ELEMENTS; i++) 
     {
         b[i] = i * 2;
     }
-    for (int i = 0; i; i++) //mindig hamis lesz a feltétel, mert 0-ról kezd az i
+    
+    // Feltétel kijavítva, hogy lefusson 0-tól N_ELEMENTS-ig
+    for (int i = 0; i < N_ELEMENTS; i++) 
     {
-        std::cout << "Ertek:" //nincs kiirandó érték, hiányzik a változó
+        // Kiíratjuk az értéket
+        std::cout << "Ertek: " << b[i] << std::endl;
     }    
+    
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag; //nincs inicializálva
-    for (int i = 0; i < N_ELEMENTS, i++) //; kellene a , helyett
+    
+    // Inicializáljuk az 'atlag' változót
+    int atlag = 0;
+    
+    // Javítva: helyes elválasztás a for ciklusnál (; a , helyett)
+    for (int i = 0; i < N_ELEMENTS; i++) 
     {
-        atlag += b[i] //megint nincs ;
+        // Pontosvessző hozzáadva
+        atlag += b[i];
     }
+    
+    // Átlag számítása
     atlag /= N_ELEMENTS;
+    
     std::cout << "Atlag: " << atlag << std::endl;
+    
+    // Memória felszabadítása
+    delete[] b; 
+    
     return 0; 
-    //nincs memória felszabadítva
 }
