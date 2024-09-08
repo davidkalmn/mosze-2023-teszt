@@ -43,5 +43,7 @@ int main()
     // Memória felszabadítása
     delete[] b; 
     
+    std::cout << "A program sikeresen lefutott!" << std::endl;
+
     return 0; 
 }
